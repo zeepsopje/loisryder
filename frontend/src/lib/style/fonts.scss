@@ -1,0 +1,20 @@
+@font-face {
+	font-family: 'Italiana';
+	font-weight: normal;
+	src:
+		url("/fonts/Italiana-Regular.ttf") format('truetype'),
+		url("/fonts/Italiana-Regular.otf") format('opentype'),
+		url("/fonts/Italiana-Regular.eot") format('eot'),
+		url("/fonts/Italiana-Regular.woff") format('woff2'),
+		url("/fonts/Italiana-Regular.woff2") format('woff2');
+}
+
+@font-face {
+	font-family: 'TenorSans';
+	font-weight: normal;
+	src: 
+		url("/fonts/TenorSans-Regular.ttf") format('truetype'),
+		url("/fonts/TenorSans-Regular.otf") format('opentype'),
+		url("/fonts/TenorSans-Regular.woff") format('woff'),
+		url("/fonts/TenorSans-Regular.woff2") format('woff2');
+}

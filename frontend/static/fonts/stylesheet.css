@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Italiana';
+    src: url('Italiana-Regular.eot');
+    src: url('Italiana-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Italiana-Regular.woff2') format('woff2'),
+        url('Italiana-Regular.woff') format('woff'),
+        url('Italiana-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Tenor Sans';
+    src: url('TenorSans.eot');
+    src: url('TenorSans.eot?#iefix') format('embedded-opentype'),
+        url('TenorSans.woff2') format('woff2'),
+        url('TenorSans.woff') format('woff'),
+        url('TenorSans.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

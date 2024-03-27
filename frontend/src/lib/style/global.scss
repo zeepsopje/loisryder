@@ -1,0 +1,47 @@
+:global {
+	* {
+		margin: 0;
+		box-sizing: border-box;
+	}
+
+	body {
+		font-family: $body-font;
+		font-size: 16px;
+		background-color: $bg-color;
+		color: $font-color;
+		line-height: 1.2;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: $heading-font;
+		color: $font-color;
+		font-weight: normal;
+	}
+
+	h1 {
+		font-size: $h1-size;
+		line-height: $h1-line-height;
+
+		@media (max-width: $breakpoint-mobile) {
+			font-size: $h1-size-mobile;
+		}
+	}
+
+	h2 {
+		font-size: $h2-size;
+		line-height: $h2-line-height;
+		overflow-wrap: break-word;
+
+		@media (max-width: $breakpoint-tablet) {
+			font-size: $h2-size-tablet;
+		}
+
+		@media (max-width: $breakpoint-mobile) {
+			font-size: $h2-size-mobile;
+		}
+	}
+
+	p {
+		line-height: 1.5;
+	}
+}
