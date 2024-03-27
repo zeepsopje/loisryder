@@ -27,7 +27,7 @@
 	}
 </script>
 
-<PageHeader title={data.page.title} />
+<PageHeader title={data.page.title} align="center" />
 <Layout withMargin gap="150">
 	{#each mapSeriesData() as {title, text, slug, images}}
 		<Span cols={[1, 2, 4]}>

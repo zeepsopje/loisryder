@@ -12,7 +12,7 @@
 
 <svelte:element {target} {href} class="button" this={href ? 'a' : 'div'}>
 	{text}
-	<img src="arrow.png" alt="">
+	<img src="/arrow.png" alt="">
 </svelte:element>
 
 <style>

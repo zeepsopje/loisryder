@@ -1,5 +1,5 @@
 export function load({ params }) {
 	return {
-		title: `${params.series} / ${params.detail}`
+		title: `${params.series} N°${params.detail}`
 	}
 }

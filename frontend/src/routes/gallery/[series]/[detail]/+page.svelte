@@ -1,5 +1,11 @@
 <script>
+	import {
+		PageHeader
+	} from '$lib';
+
 	export let data;
+
+	console.log('data:', data);
 </script>
 
-<h1>{data.title}</h1>
+<PageHeader title={data.title} align="center" />

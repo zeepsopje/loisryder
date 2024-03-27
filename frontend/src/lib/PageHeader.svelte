@@ -2,11 +2,13 @@
 	import { Layout, Span } from '$lib';
 
 	export let title;
+	export let align = 'left';
 </script>
 
-<Layout>
-	<Span cols="4">
-		<h1>{title}</h1>
+<Layout withMargin>
+	<Span />
+	<Span cols="2">
+		<h1 style:text-align={align}>{title}</h1>
 	</Span>
 </Layout>
 

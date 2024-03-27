@@ -11,7 +11,7 @@
 	<img
 		class="close"
 		on:click={() => dispatch('close')}
-		src="close.png"
+		src="/close.png"
 	/>
 	<nav>
 		{#each items as { title, slug }, i}

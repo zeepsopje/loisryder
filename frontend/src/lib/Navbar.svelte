@@ -2,7 +2,7 @@
 	import { fade } from "svelte/transition";
 	import { Layout, Menu } from '$lib';
 
-	export let menuItems;
+	export let menuItems = [];
 
 	let menuOpened = false;
 </script>
