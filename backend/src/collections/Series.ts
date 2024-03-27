@@ -42,6 +42,14 @@ const Series: CollectionConfig = {
 							required: true,
 						},
 						{
+							name: 'subtitle',
+							type: 'text',
+							required: true,
+							admin: {
+								description: 'Brief sub heading that explains just a bit more than the title does'
+							}
+						},
+						{
 							name: 'text',
 							type: 'textarea',
 							required: true,
