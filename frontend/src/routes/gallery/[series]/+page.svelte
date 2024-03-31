@@ -8,12 +8,11 @@
 
 	export let data;
 
-
 	const items = data.page.artworks.map((item, i) => ({
 		isLandscape: item.isLandscape,
 		alt: item.image.alt,
-		filename: item.image.sizes.tablet.filename,
-		href: `${data.url}/${i+1}`,
+		src: item.image.sizes.tablet.url,
+		href: `${data.page.slug}/${i+1}`,
 	}));
 </script>
 

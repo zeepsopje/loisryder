@@ -8,76 +8,72 @@
 		AutoSwitch,
 		ArrowButton,
 	} from '$lib';
+	import { onMount } from 'svelte';
 
-	const collections = [ 'Layers of Decay', 'Relief', 'Sea' ];
+	export let title;
+	export let text;
+
+	let collections = [];
 	let currCollection = 0;
+
+	onMount(async () => {
+		const res = await fetch('/api/series').then(res => res.json());
+		collections = res.docs;
+		console.log(collections);
+	});
 </script>
 
 <Layout cols="1" withMargin>
 	<HeadingTextPair
-		heading="Very nice bootyful artwork"
-		text="I’m being serious, I’m being serious. I don’t do if, buts or maybes. I only do absolutes. If me aunt had balls she would’ve been me uncle, but she doesn’t, so she isn’t, you know what I’m saying."
+		heading={title}
+		text={text}
 	/>
-	<AutoSwitch bind:selected={currCollection} options={collections} />
-	<div class="gallery">
-		<Layout cols={[1, 2, 4]}>
-			{#key currCollection}
-				<Span>
-					<div class="item text">
-						<Text>
-							<h2>{collections[currCollection]}</h2>
-							<p>
-								Shank capicola burgdoggen ribeye tongue tri-tip, short ribs pig. Pork belly turducken doner pork chop.
-							</p>
-							<ArrowButton text="See all" href="/work" />
-						</Text>
-					</div>
-				</Span>
-				<Span>
-					<div
-						class="item"
-						style:background-image="url(images/1.jpg)"
-					/>
-				</Span>
-				<Span>
-					<div
-						class="item"
-						style:background-image="url(images/2.jpg)"
-					/>
-				</Span>
-				<Span>
-					<div
-						class="item"
-						style:background-image="url(images/3.jpg)"
-					/>
-				</Span>
-				<Span>
-					<div
-						class="item"
-						style:background-image="url(images/4.jpg)"
-					/>
-				</Span>
-				<Span>
-					<div
-						class="item"
-						style:background-image="url(images/5.jpg)"
-					/>
-				</Span>
-				<Span>
-					<div
-						class="item"
-						style:background-image="url(images/6.jpg)"
-					/>
-				</Span>
-				<Span>
-					<div
-						class="item"
-						style:background-image="url(images/7.jpg)"
-					/>
-				</Span>
-			{/key}
-		</Layout>
-	</div>
+	<AutoSwitch
+		bind:selected={currCollection}
+		options={collections.map(({ title }) => title)}
+	/>
+	{#if collections.length > 0}
+		<div class="gallery">
+			<Layout cols={[1, 2, 4]}>
+				{#key currCollection}
+					<Span>
+						<div class="item text">
+							<Text>
+								<h2
+									in:fly={{ y: -20, duration: 400, delay: 400 }}
+									out:fly={{ y: -20, duration: 400 }}
+								>
+									{collections[currCollection].title}
+								</h2>
+								<p
+									in:fly={{ y: -20, duration: 400, delay: 600 }}
+									out:fly={{ y: -20, duration: 400 }}
+								>
+									{collections[currCollection].subtitle}
+								</p>
+								<div
+									in:fly={{ y: -20, duration: 400, delay: 800 }}
+									out:fly={{ y: -20, duration: 400 }}
+								>
+									<ArrowButton text="See all" href="/work" />
+								</div>
+							</Text>
+						</div>
+					</Span>
+				{/key}
+				{#each [...Array(7).keys()] as i}
+					{@const picture = collections[currCollection].pictures[i]}
+					{#key picture?.id}
+						<div
+							in:fly={{ y: 50, duration: 400, delay: 600 + (i * 200) }}
+							class="item"
+							style:background-image="url({picture?.image.sizes.tablet.url})"
+						/>
+					{/key}
+				{/each}
+			</Layout>
+		</div>
+	{/if}
 </Layout>
 
 <style lang="scss">

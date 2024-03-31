@@ -1,5 +1,4 @@
 <script>
-	import { PUBLIC_BACKEND_URL } from '$env/static/public';
 	import {
 		Layout,
 		Span,
@@ -19,8 +18,8 @@
 	<Layout withMargin>
 		<Span cols="2">
 			<Text>
-				<h2>{title}</h2>
-				<p class="floating-text">{text}</p>
+				<h2>{@html title}</h2>
+				<p class="floating-text">{@html text}</p>
 			</Text>
 		</Span>
 		<Span cols="2">
@@ -34,17 +33,20 @@
 </div>
 
 <style lang="scss">
+	h2 {
+		padding-right: 20px;
+	}
+
 	.floating-text {
 		width: 50%;
 		margin: 0 auto;
 
 		@media (max-width: $breakpoint-tablet) {
-			width: 50%;
+			width: 100%;
 			margin: 0;
 		}
 
 		@media (max-width: $breakpoint-mobile) {
-			width: 100%;
 		}
 	}
 

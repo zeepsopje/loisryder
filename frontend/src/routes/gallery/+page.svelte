@@ -11,6 +11,8 @@
 
 	export let data;
 
+	const page = data.general.presets.gallery;
+
 	function mapSeriesData() {
 		return data.series.map(serie => {
 			return {
@@ -18,7 +20,7 @@
 				images: serie.pictures.map(image => {
 					return {
 						...image,
-						filename: image.image.sizes.tablet.filename,
+						src: image.image.sizes.tablet.url,
 						alt: image.alt,
 					}
 				}),
@@ -27,19 +29,18 @@
 	}
 </script>
 
-<PageHeader title={data.page.title} align="center" />
+<PageHeader title={page.title} align="center" />
 <Layout withMargin gap="150">
 	{#each mapSeriesData() as {title, text, slug, images}}
 		<Span cols={[1, 2, 4]}>
-			<Layout cols="1" gap="50">
+			<a href="/gallery/{slug}">
 				<HeadingTextPair
 					centered
 					heading={title}
 					text={text}
 				/>
 				<ImageGrid {images} />
-				<ArrowButton text="Go to series '{title}'" href="/gallery/{slug}" />
-			</Layout>
+			</a>
 		</Span>
 	{/each}
 </Layout>

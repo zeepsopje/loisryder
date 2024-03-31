@@ -6,11 +6,9 @@
 	export let text;
 	export let href;
 	export let external;
-
-	let target = external ? "_blank" : "_self";
 </script>
 
-<svelte:element {target} {href} class="button" this={href ? 'a' : 'div'}>
+<svelte:element {href} class="button" this={href ? 'a' : 'div'}>
 	{text}
 	<img src="/arrow.png" alt="">
 </svelte:element>

@@ -6,15 +6,17 @@
 </script>
 
 <Layout withMargin>
-	<Span />
-	<Span cols="2">
+	{#if align !== 'center'}
+		<Span />
+	{/if}
+	<Span cols={align === 'center' ? 4 : 2}>
 		<h1 style:text-align={align}>{title}</h1>
 	</Span>
 </Layout>
 
 <style lang="scss">
 	h1 {
-		padding-top: 340px;
+		padding-top: 140px;
 		margin: 0;
 		text-align: center;
 

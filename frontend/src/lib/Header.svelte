@@ -3,25 +3,19 @@
 	import { onMount } from 'svelte';
 
 	export let image;
-
-	let loaded = false;
-
-	onMount(() => {
-		loaded = true;
-	});
 </script>
 
 <div
 	class="header"
 >
-	{#if loaded}
-		<div
-			class="bg"
-			style:background-image="url({image})"
-		>
-		</div>
-	{/if}
-	<h1>Lois<br/>Ryder</h1>
+	<div
+		class="bg"
+		style:background-image="url({image})"
+	>
+	</div>
+	{#key loaded}
+		<h1>Lois<br/>Ryder</h1>
+	{/key}
 </div>
 
 <style lang="scss">
@@ -33,6 +27,7 @@
 		display: grid;
 		place-items: center center;
 		position: relative;
+		overflow: hidden;
 	}
 
 	.bg {
@@ -42,10 +37,13 @@
 		top: 0;
 		left: 0;
 		z-index: -1;
+		opacity: 0;
 		background-position: center center;
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-color: black;
+		animation: scale 2s forwards;
+		animation-delay: .5s;
 	}
 
 	h1 {
@@ -55,6 +53,10 @@
 		font-size: 250px;
 		user-select: none;
 		margin-bottom: 0;
+		animation: scale-fade .8s forwards;
+		animation-delay: .2s;
+		transform: scale(.8);
+		opacity: 0;
 
 		@media (max-width: $breakpoint-tablet) {
 			font-size: 170px;
@@ -70,6 +72,27 @@
 
 		@media (max-width: 410px) {
 			font-size: 120px;
+		}
+	}
+
+	@keyframes scale-fade {
+		from {
+			transform: scale(.8);
+			opacity: 0;
+		}
+		to {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+
+	@keyframes scale {
+		from {
+			transform: scale(1.2);
+		}
+		to {
+			transform: scale(1);
+			opacity: 1;
 		}
 	}
 </style>

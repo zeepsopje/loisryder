@@ -8,11 +8,7 @@
 	{#each images as image}
 		<Span cols={[1, image.isLandscape ? 2 : 1]}>
 			<a class="image" href={image.href}>
-				<Media
-					file={image.filename}
-					alt={image.alt}
-					cover
-				/>
+				<img src={image.src} alt={image.alt} />
 			</a>
 		</Span>
 	{/each}
@@ -24,6 +20,12 @@
 		height: 350px;
 		overflow: hidden;
 		position: relative;
+	}
+
+	.image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 
 	.image[href]::after {

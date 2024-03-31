@@ -1,18 +1,45 @@
 <script>
-	import { blur } from "svelte/transition";
-    import { Layout, Span, Navbar, Footer } from '$lib';
+	import { afterNavigate, disableScrollHandling } from '$app/navigation';
+	import { blur, fly, scale } from "svelte/transition";
+	import {
+		Layout,
+		Menu,
+		Span,
+		Navbar,
+		Footer,
+	} from '$lib';
+	import { onMount } from "svelte";
 
 	export let data;
+	export let menuItems = [];
+
+	let menuOpened = false;
+
+	const duration = 500;
+	const delay = duration;
+
+	afterNavigate(() => {
+		disableScrollHandling();
+		setTimeout(() => {
+			scrollTo({ top: 0, behavior: 'instant' });
+		});
+	});
 </script>
 
-<div class="root"
->
-	<Navbar {...data.nav} />
-	<div class="page">
-		<slot />
+{#key data.path}
+	<div
+		class="root"
+		in:fly={{ y: -50, duration, delay }}
+		out:fly={{ y: 0, duration }}
+	>
+		<div class="page">
+			<slot />
+		</div>
+		<Footer {...data.footer} />
 	</div>
-	<Footer {...data.footer} />
-</div>
+{/key}
+<Menu items={data.nav.menuItems} bind:active={menuOpened} />
+<Navbar bind:menuOpened />
 
 <style lang="scss">
 	.root {

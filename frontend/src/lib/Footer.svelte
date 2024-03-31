@@ -10,7 +10,7 @@
 	export let text;
 	export let link;
 
-	let hasExternalUrl = link.type === 'custom';
+	let hasExternalUrl = link?.type === 'custom';
 </script>
 
 <footer>
@@ -20,11 +20,13 @@
 				<Text>
 					<h2>{title}</h2>
 					<p>{text}</p>
-					<ArrowButton
-						external={hasExternalUrl}
-						text={link.label}
-						href={hasExternalUrl ? link.url : `/${link.reference.value.slug}`}
-					/>
+					{#if link}
+						<ArrowButton
+							external={hasExternalUrl}
+							text={link.label}
+							href={hasExternalUrl ? link.url : `/${link.reference.value.slug}`}
+						/>
+					{/if}
 				</Text>
 			</div>
 		</Layout>
@@ -60,7 +62,7 @@
 	}
 
 	.main {
-		padding: 308px 0 105px;
+		padding: 208px 0 105px;
 
 		@media (max-width: $breakpoint-mobile) {
 			padding: 51px 0 193px;
@@ -69,17 +71,17 @@
 
 	.logo {
 		padding-bottom: 48px;
-
-		@media (max-width: $breakpoint-mobile) {
-			padding-bottom: 204px;
-			display: flex;
-			justify-content: center;
-		}
 	}
 
 	.logo span {
 		font-size: 48px;
 		line-height: .79;
 		font-family: 'Italiana', serif;
+
+		@media (max-width: $breakpoint-mobile) {
+			padding-bottom: 204px;
+			display: flex;
+			justify-content: center;
+		}
 	}
 </style>

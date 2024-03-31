@@ -22,8 +22,10 @@ const Series: CollectionConfig = {
 					pagination: false,
 				});
 
-				if (data) {
+				if (data.docs.length) {
 					res.status(200).send(data.docs[0]);
+				} else {
+					res.sendStatus(404);
 				}
 			},
 		},
@@ -104,6 +106,16 @@ const Series: CollectionConfig = {
 									type: 'row',
 									fields: [
 										{
+											type: 'number',
+											label: 'Width (cm)',
+											name: 'width',
+										},
+										{
+											type: 'number',
+											label: 'Height (cm)',
+											name: 'height',
+										},
+										{
 											type: 'text',
 											name: 'year',
 											required: true,
@@ -116,7 +128,7 @@ const Series: CollectionConfig = {
 											name: 'type',
 											required: true,
 											options: [
-												'canvas',
+												'Canvas',
 											],
 											admin: {
 												width: '50%'

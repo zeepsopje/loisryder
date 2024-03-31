@@ -1,5 +1,16 @@
-export function load({ params }) {
+import { error } from '@sveltejs/kit';
+
+export async function load({ params, fetch }) {
+	const { artworks, title } = await fetch(`/api/series/slug/${params.series}`)
+		.then(res => res.json());
+
+	if (artworks.length < params.detail-1) {
+		return error(404);
+	}
+
 	return {
-		title: `${params.series} N°${params.detail}`
+		series: title,
+		title: `${title} N°${params.detail}`,
+		artwork: artworks[params.detail-1]
 	}
 }

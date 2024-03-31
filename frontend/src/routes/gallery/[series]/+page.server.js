@@ -1,14 +1,15 @@
 import { error } from '@sveltejs/kit';
-import payload from '$lib/server/payload';
 
 export async function load({ params, fetch }) {
-	const { status, body } = await payload(fetch, `/series/slug/${params.series}`);
+	const res = await fetch(`/api/series/slug/${params.series}`);
 
-	if (status !== 200) {
+	if (res.status !== 200) {
 		return error(404);
 	}
 
+	const page = await res.json();
+
 	return {
-		page: body
+		page,
 	}
 }

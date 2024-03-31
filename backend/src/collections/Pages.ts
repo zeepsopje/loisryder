@@ -1,6 +1,8 @@
 import { CollectionConfig } from 'payload/types'
-import HomeIntro from '../blocks/HomeIntro';
 import { slugField } from '../fields/slug';
+
+import HomeIntro from '../blocks/HomeIntro';
+import SeriesPreview from '../blocks/SeriesPreview';
 
 const Pages: CollectionConfig = {
 	slug: 'pages',
@@ -23,8 +25,10 @@ const Pages: CollectionConfig = {
 					pagination: false,
 				});
 
-				if (data) {
+				if (data.docs.length) {
 					res.status(200).send(data.docs[0]);
+				} else {
+					res.sendStatus(404);
 				}
 			},
 		},
@@ -60,6 +64,7 @@ const Pages: CollectionConfig = {
 							name: 'blocks',
 							blocks: [
 								HomeIntro,
+								SeriesPreview,
 							],
 						},
 					]

@@ -1,10 +1,7 @@
 <script>
 	import { fade } from "svelte/transition";
-	import { Layout, Menu } from '$lib';
 
-	export let menuItems = [];
-
-	let menuOpened = false;
+	export let menuOpened = false;
 </script>
 
 <div class="navbar">
@@ -18,21 +15,20 @@
 			on:click={() => menuOpened = true}
 		/>
 	</div>
-	{#if menuOpened}
-		<Menu items={menuItems} on:close={() => menuOpened = false} />
-	{/if}
 </div>
 
 <style lang="scss">
 	.navbar {
 		width: 100%;
-		position: absolute;
+		position: fixed;
 		top: 0;
 		left: 0;
 		display: flex;
 		justify-content: space-between;
 		padding: $page-margin 40px 0;
 		user-select: none;
+		z-index: 100;
+		mix-blend-mode: difference;
 
 		.logo, .menu {
 			mix-blend-mode: difference;
