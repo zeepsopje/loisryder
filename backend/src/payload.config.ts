@@ -43,7 +43,7 @@ export default buildConfig({
 			method: 'get',
 			handler: async (req, res, next) => {
 				const response = {};
-				const result = await Promise.all(
+				const result: any = await Promise.all(
 					globals.map(({ slug }) => payload.findGlobal({
 						slug,
 						depth: 2,
