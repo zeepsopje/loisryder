@@ -50,6 +50,12 @@
 		z-index: 3;
 		text-decoration: none;
 		color: black;
+
+		@media (max-width: $breakpoint-mobile) {
+			font-size: 36px;
+			top: 20px;
+			left: 20px;
+		}
 	}
 
 	.close {
