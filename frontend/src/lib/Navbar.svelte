@@ -2,7 +2,11 @@
 	import { fade } from "svelte/transition";
 
 	export let menuOpened = false;
+
+	let scrollY = null;
 </script>
+
+<svelte:window bind:scrollY />
 
 <div class="navbar">
 	<a class="logo" href="/">Lois<br/>Ryder</a>
@@ -16,8 +20,26 @@
 		/>
 	</div>
 </div>
+<div class="bg" class:show={scrollY > 250}></div>
 
 <style lang="scss">
+	.bg {
+		width: 100%;
+		height: 100px;
+		background-color: #fff;
+		top: 0;
+		left: 0;
+		position: fixed;
+		opacity: 0;
+		transition: all .2s ease-in-out;
+
+		@media (max-width: $breakpoint-mobile) {
+			&.show {
+				opacity: 1;
+			}
+		}
+	}
+
 	.navbar {
 		width: 100%;
 		position: fixed;
