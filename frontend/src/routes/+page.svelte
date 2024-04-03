@@ -4,12 +4,12 @@
 
 	export let data;
 
-	const page = data.general.presets.home;
+	const blocks = data?.general?.presets?.home?.blocks || [];
 </script>
 
 <Header image="lois.jpeg" />
 
-{#each page?.blocks || [] as block}
+{#each blocks as block}
 	{#if block.blockType === 'HomeIntro'}
 		<SiteIntro {...block} />
 	{/if}

@@ -26,7 +26,7 @@
 	});
 </script>
 
-{#key data.path}
+{#key data?.path}
 	<div
 		class="root"
 		in:fly={{ y: -50, duration, delay }}
@@ -35,10 +35,10 @@
 		<div class="page">
 			<slot />
 		</div>
-		<Footer {...data.footer} />
+		<Footer {...data?.footer} />
 	</div>
 {/key}
-<Menu items={data.nav.menuItems} bind:active={menuOpened} />
+<Menu items={data?.nav?.menuItems} bind:active={menuOpened} />
 <Navbar bind:menuOpened />
 
 <style lang="scss">

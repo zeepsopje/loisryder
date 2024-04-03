@@ -23,13 +23,15 @@
 			</Text>
 		</Span>
 		<Span cols="2">
-			<Media file="{image.sizes.tablet.filename}" />
+			<Media file="{image?.sizes?.tablet?.filename}" />
 		</Span>
 	</Layout>
 	<div class="full-width-image">
-		<Media file={image.sizes.tablet.filename} />
+		<Media file={image?.sizes?.tablet?.filename} />
 	</div>
-	<BlockQuote text={quote} />
+	{#if quote}
+		<BlockQuote text={quote} />
+	{/if}
 </div>
 
 <style lang="scss">
@@ -44,9 +46,6 @@
 		@media (max-width: $breakpoint-tablet) {
 			width: 100%;
 			margin: 0;
-		}
-
-		@media (max-width: $breakpoint-mobile) {
 		}
 	}
 

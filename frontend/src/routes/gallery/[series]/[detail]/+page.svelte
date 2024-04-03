@@ -15,23 +15,23 @@
 	} = data.artwork;
 </script>
 
-<PageHeader title={data.title} align="center" />
+<PageHeader title={data?.title} align="center" />
 <div class="artwork">
 	<Layout withMargin cols="1">
-		<img src={data.artwork.image.url} alt="">
+		<img src={data?.artwork?.image?.url} alt="">
 	</Layout>
 	<Layout withMargin cols={[2, 2, 4]} gap="38">
 		<Span>
 			<h3>Series</h3>
-			{data.series}
+			{data?.series}
 		</Span>
 		<Span>
 			<h3>Year</h3>
-			{data.artwork.year}
+			{data?.artwork?.year}
 		</Span>
 		<Span>
 			<h3>Type</h3>
-			{data.artwork.type}
+			{data?.artwork?.type}
 		</Span>
 		{#if width && height}
 			<Span>

@@ -60,8 +60,8 @@ export default buildConfig({
 	],
 	editor: slateEditor({}),
 	csrf: [
-		'http://localhost:3000',
-		'http://localhost:5173',
+		process.env.BACKEND_URL,
+		process.env.FRONTEND_URL,
 	],
 	typescript: {
 		outputFile: path.resolve(__dirname, 'payload-types.ts'),

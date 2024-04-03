@@ -18,8 +18,7 @@
 
 	onMount(async () => {
 		const res = await fetch('/api/series').then(res => res.json());
-		collections = res.docs;
-		console.log(collections);
+		collections = res.docs || [];
 	});
 </script>
 
@@ -30,7 +29,7 @@
 	/>
 	<AutoSwitch
 		bind:selected={currCollection}
-		options={collections.map(({ title }) => title)}
+		options={collections?.map(({ title }) => title)}
 	/>
 	{#if collections.length > 0}
 		<div class="gallery">
@@ -43,13 +42,13 @@
 									in:fly={{ y: -20, duration: 400, delay: 400 }}
 									out:fly={{ y: -20, duration: 400 }}
 								>
-									{collections[currCollection].title}
+									{collections[currCollection]?.title}
 								</h2>
 								<p
 									in:fly={{ y: -20, duration: 400, delay: 600 }}
 									out:fly={{ y: -20, duration: 400 }}
 								>
-									{collections[currCollection].subtitle}
+									{collections[currCollection]?.subtitle}
 								</p>
 								<div
 									in:fly={{ y: -20, duration: 400, delay: 800 }}
@@ -62,12 +61,12 @@
 					</Span>
 				{/key}
 				{#each [...Array(7).keys()] as i}
-					{@const picture = collections[currCollection].pictures[i]}
+					{@const picture = collections[currCollection]?.pictures[i]}
 					{#key picture?.id}
 						<div
 							in:fly={{ y: 50, duration: 400, delay: 600 + (i * 200) }}
 							class="item"
-							style:background-image="url({picture?.image.sizes.tablet.url})"
+							style:background-image="url({picture?.image?.sizes?.tablet?.url})"
 						/>
 					{/key}
 				{/each}
