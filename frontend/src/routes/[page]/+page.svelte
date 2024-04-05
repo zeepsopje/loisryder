@@ -1,5 +1,7 @@
 <script>
+	import PageHeader from "$lib/PageHeader.svelte";
+
 	export let data;
 </script>
 
-<h1>{data.title}</h1>
+<PageHeader title={data.title} />
