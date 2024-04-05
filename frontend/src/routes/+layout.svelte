@@ -22,7 +22,7 @@
 		disableScrollHandling();
 		setTimeout(() => {
 			scrollTo({ top: 0, behavior: 'instant' });
-		});
+		}, duration);
 	});
 </script>
 
