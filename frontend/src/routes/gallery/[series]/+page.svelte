@@ -22,5 +22,14 @@
 		heading={data?.page?.subtitle}
 		text={data?.page?.text}
 	/>
+	<div class="space"></div>
 	<ImageGrid images={items} />
 </Layout>
+
+<style lang="scss">
+	.space {
+		@media (max-width: $breakpoint-tablet) {
+			height: 50px;
+		}
+	}
+</style>
