@@ -1,4 +1,8 @@
-<div class="text">
+<script>
+	export let align = 'left';
+</script>
+
+<div class="text" style:text-align={align}>
 	<slot />
 </div>
 
@@ -10,6 +14,10 @@
 
 		h1, h2, h3, h4, h5, h6 {
 			margin-bottom: 0.8em;
+		}
+
+		a {
+			text-decoration: underline;
 		}
 	}
 </style>

@@ -54,7 +54,7 @@
 									in:fly={{ y: -20, duration: 400, delay: 800 }}
 									out:fly={{ y: -20, duration: 400 }}
 								>
-									<ArrowButton text="See all" href="/work" />
+									<ArrowButton text="See all" href="/gallery/{collections[currCollection].slug}" />
 								</div>
 							</Text>
 						</div>
