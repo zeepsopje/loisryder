@@ -31,7 +31,7 @@
 <style lang="scss">
 	.overlay {
 		width: 100vw;
-		height: 100svh;
+		height: 100dvh;
 		position: fixed;
 		left: 0;
 		top: 0;
