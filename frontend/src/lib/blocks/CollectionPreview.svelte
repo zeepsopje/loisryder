@@ -60,8 +60,7 @@
 						</div>
 					</Span>
 				{/key}
-				{#each [...Array(7).keys()] as i}
-					{@const picture = collections[currCollection]?.pictures[i]}
+				{#each collections[currCollection].pictures as picture, i}
 					{#key picture?.id}
 						<div
 							in:fly={{ y: 50, duration: 400, delay: 600 + (i * 200) }}
