@@ -62,9 +62,8 @@ const Series: CollectionConfig = {
 						{
 							name: 'pictures',
 							type: 'array',
-							maxRows: 7,
 							admin: {
-								description: 'Collection of pictures to give a general impression of the artwork series. Maximum of 7 allowed.'
+								description: 'Collection of pictures to give a general impression of the artwork series.'
 							},
 							fields: [
 								{
