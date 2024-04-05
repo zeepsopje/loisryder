@@ -14,7 +14,7 @@
 	{/each}
 </Layout>
 
-<style>
+<style lang="scss">
 	.image {
 		display: block;
 		height: 350px;
@@ -51,9 +51,9 @@
 		}
 	}
 
-	@media (max-width: 530px) {
+	@media (max-width: $breakpoint-mobile) {
 		.image {
-			height: 200px;
+			height: 400px;
 		}
 	}
 </style>
