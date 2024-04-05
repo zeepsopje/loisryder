@@ -20,7 +20,7 @@
 		/>
 	</div>
 </div>
-<div class="bg" class:show={scrollY > 250}></div>
+<div class="bg" class:show={scrollY > 550}></div>
 
 <style lang="scss">
 	.bg {
