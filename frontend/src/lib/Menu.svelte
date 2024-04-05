@@ -46,6 +46,9 @@
 		background-color: $bg-color;
 		mix-blend-mode: normal;
 		z-index: 2000;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	.logo {
@@ -87,9 +90,6 @@
 		justify-content: flex-end;
 		padding: 0 40px 33px;
 		gap: 10px;
-		position: absolute;
-		left: 0;
-		bottom: 0;
 
 		@media (max-width: $breakpoint-tablet) {
 			gap: 19px;
