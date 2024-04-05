@@ -4,7 +4,15 @@
 
 	export let active = false;
 	export let items = [];
+
+	function onScroll(e) {
+		if (active) {
+			e.preventDefault();
+		}
+	}
 </script>
+
+<svelte:window on:wheel|nonpassive={onScroll} />
 
 {#if active}
 	<div class="overlay" transition:trans={{ start: .9, y: -100, duration: 500, easing: e.circInOut }}>
