@@ -69,6 +69,9 @@ export default buildConfig({
 	graphQL: {
 		schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
 	},
+	rateLimit: {
+		trustProxy: true,
+	},
 	plugins: [payloadCloud()],
 	db: mongooseAdapter({
 		url: process.env.DATABASE_URI,
