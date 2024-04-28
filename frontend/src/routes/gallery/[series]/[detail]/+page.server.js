@@ -10,7 +10,7 @@ export async function load({ params, fetch }) {
 
 	return {
 		series: title,
-		title: `${title} N°${params.detail}`,
+		title: artworks[params.detail-1].name || `${title} N°${params.detail}`,
 		artwork: artworks[params.detail-1]
 	}
 }

@@ -105,6 +105,11 @@ const Series: CollectionConfig = {
 									type: 'row',
 									fields: [
 										{
+											type: 'text',
+											label: 'Name',
+											name: 'name',
+										},
+										{
 											type: 'number',
 											label: 'Width (cm)',
 											name: 'width',
