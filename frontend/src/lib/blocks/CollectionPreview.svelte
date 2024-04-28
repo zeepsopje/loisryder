@@ -22,7 +22,7 @@
 	});
 </script>
 
-<Layout cols="1" withMargin>
+<Layout cols="1" withMargin gap={30}>
 	<HeadingTextPair
 		heading={title}
 		text={text}
@@ -86,6 +86,7 @@
 
 <style lang="scss">
 	.gallery {
+		width: 100%;
 		margin-top: 95px;
 
 		@media (max-width: $breakpoint-mobile) {
