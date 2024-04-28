@@ -86,7 +86,6 @@
 
 <style lang="scss">
 	.gallery {
-		width: 100%;
 		margin-top: 95px;
 
 		@media (max-width: $breakpoint-mobile) {
@@ -115,10 +114,11 @@
 	} 
 
 	.gallery.hidden {
-		visibility: invisible;
+		visibility: hidden;
 	}
 
 	.gallery:not(.hidden) {
+		width: 100%;
 		position: absolute;
 		top: 0;
 		left: 0;
