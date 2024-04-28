@@ -31,47 +31,57 @@
 		bind:selected={currCollection}
 		options={collections?.map(({ title }) => title)}
 	/>
-	{#if collections.length > 0}
-		<div class="gallery">
-			<Layout cols={[1, 2, 4]}>
-				{#key currCollection}
-					<Span>
-						<div class="item text">
-							<Text>
-								<h2
-									in:fly={{ y: -20, duration: 400, delay: 400 }}
-									out:fly={{ y: -20, duration: 400 }}
-								>
-									{collections[currCollection]?.title}
-								</h2>
-								<p
-									in:fly={{ y: -20, duration: 400, delay: 600 }}
-									out:fly={{ y: -20, duration: 400 }}
-								>
-									{collections[currCollection]?.subtitle}
-								</p>
-								<div
-									in:fly={{ y: -20, duration: 400, delay: 800 }}
-									out:fly={{ y: -20, duration: 400 }}
-								>
-									<ArrowButton text="See all" href="/gallery/{collections[currCollection].slug}" />
-								</div>
-							</Text>
-						</div>
-					</Span>
-				{/key}
-				{#each collections[currCollection].pictures as picture, i}
-					{#key picture?.id}
-						<div
-							in:fly={{ y: 50, duration: 400, delay: 600 + (i * 200) }}
-							class="item"
-							style:background-image="url({picture?.image?.sizes?.tablet?.url})"
-						/>
+	<div class="container">
+		{#if collections.length > 0}
+			<div class="gallery hidden">
+				<Layout cols={[1, 2, 4]}>
+					<div class="item" />
+					<div class="item" />
+					<div class="item" />
+					<div class="item" />
+				</Layout>
+			</div>
+			<div class="gallery">
+				<Layout cols={[1, 2, 4]}>
+					{#key currCollection}
+						<Span>
+							<div class="item text">
+								<Text>
+									<h2
+										in:fly={{ y: -20, duration: 400, delay: 400 }}
+										out:fly={{ y: -20, duration: 400 }}
+									>
+										{collections[currCollection]?.title}
+									</h2>
+									<p
+										in:fly={{ y: -20, duration: 400, delay: 600 }}
+										out:fly={{ y: -20, duration: 400 }}
+									>
+										{collections[currCollection]?.subtitle}
+									</p>
+									<div
+										in:fly={{ y: -20, duration: 400, delay: 800 }}
+										out:fly={{ y: -20, duration: 400 }}
+									>
+										<ArrowButton text="See all" href="/gallery/{collections[currCollection].slug}" />
+									</div>
+								</Text>
+							</div>
+						</Span>
 					{/key}
-				{/each}
-			</Layout>
-		</div>
-	{/if}
+					{#each collections[currCollection].pictures.slice(0, 3) as picture, i}
+						{#key picture?.id}
+							<div
+								in:fly={{ y: 50, duration: 400, delay: 600 + (i * 200) }}
+								class="item"
+								style:background-image="url({picture?.image?.sizes?.tablet?.url})"
+							/>
+						{/key}
+					{/each}
+				</Layout>
+			</div>
+		{/if}
+	</div>
 </Layout>
 
 <style lang="scss">
@@ -102,4 +112,18 @@
 			}
 		}
 	} 
+
+	.gallery.hidden {
+		visibility: invisible;
+	}
+
+	.gallery:not(.hidden) {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.container {
+		position: relative;
+	}
 </style>

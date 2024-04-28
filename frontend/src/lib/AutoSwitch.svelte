@@ -9,7 +9,7 @@
 	onMount(() => {
 		setInterval(() => {
 			timeSpent++;
-			if (timeSpent === 5) {
+			if (timeSpent === 10) {
 				selected++;
 				if (selected > options.length-1) {
 					selected = 0;
