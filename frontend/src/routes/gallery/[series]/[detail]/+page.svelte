@@ -15,10 +15,12 @@
 	} = data.artwork;
 </script>
 
-<PageHeader title={data?.title} align="center" />
 <div class="artwork">
 	<Layout withMargin cols="1">
-		<img src={data?.artwork?.image?.url} alt="">
+		<h1>{data?.title}</h1>
+		<div class="image">
+			<img src={data?.artwork?.image?.url} alt="">
+		</div>
 	</Layout>
 	<Layout withMargin cols={[2, 2, 4]} gap="38">
 		<Span>
@@ -45,6 +47,22 @@
 <style lang="scss">
 	img {
 		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		background-color: black;
+	}
+
+	h1 {
+		height: 360px;
+		display: flex;
+		align-items: center;
+		text-align: center;
+		justify-content: center;
+		margin-bottom: 0;
+	}
+
+	.image {
+		height: calc(100vh - 400px);
 	}
 
 	.artwork {
