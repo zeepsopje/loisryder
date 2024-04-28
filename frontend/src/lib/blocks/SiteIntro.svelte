@@ -15,11 +15,11 @@
 </script>
 
 <div class="site-intro">
-	<Layout withMargin>
+	<Layout withMargin gap={100}>
 		<Span cols="2">
 			<Text>
 				<h2>{@html title}</h2>
-				<p class="floating-text">{@html text}</p>
+				<p>{@html text}</p>
 			</Text>
 		</Span>
 		<Span cols="2">
@@ -37,16 +37,6 @@
 <style lang="scss">
 	h2 {
 		padding-right: 20px;
-	}
-
-	.floating-text {
-		width: 50%;
-		margin: 0 auto;
-
-		@media (max-width: $breakpoint-tablet) {
-			width: 100%;
-			margin: 0;
-		}
 	}
 
 	.site-intro :global(img) {
