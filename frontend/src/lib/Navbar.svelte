@@ -26,7 +26,7 @@
 	.bg {
 		width: 100%;
 		height: 100px;
-		background-color: #fff;
+		background-color: $bg-color;
 		top: 0;
 		left: 0;
 		position: fixed;
