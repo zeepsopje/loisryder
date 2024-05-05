@@ -1,8 +1,6 @@
 <script>
 	import {
 		PageHeader,
-		Layout,
-		Span,
 	} from '$lib';
 
 	export let data;
@@ -12,77 +10,58 @@
 		height,
 		year,
 		type,
+		image,
 	} = data.artwork;
 </script>
 
+<PageHeader title={data.title} align="center" />
 <div class="artwork">
-	<Layout withMargin cols="1">
-		<h1>{data?.title}</h1>
-		<div class="image">
-			<img src={data?.artwork?.image?.url} alt="">
-		</div>
-	</Layout>
-	<Layout withMargin cols={[2, 2, 4]} gap="38">
-		<Span>
-			<h3>Series</h3>
-			{data?.series}
-		</Span>
-		<Span>
+	<img src={image.sizes.tablet.url} alt={data.title} />
+	<div class="specs">
+		<div class="spec">
 			<h3>Year</h3>
-			{data?.artwork?.year}
-		</Span>
-		<Span>
+			{year}
+		</div>
+		<div class="spec">
 			<h3>Type</h3>
-			{data?.artwork?.type}
-		</Span>
+			{type}
+		</div>
+		<div class="spec">
+			<h3>Series</h3>
+			{data.series}
+		</div>
 		{#if width && height}
-			<Span>
+			<div class="spec">
 				<h3>Dimensions</h3>
 				{width} x {height}
-			</Span>
+			</div>
 		{/if}
-	</Layout>
+	</div>
 </div>
 
 <style lang="scss">
-	img {
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
-		background-color: black;
-	}
-
-	h1 {
-		height: 360px;
-		display: flex;
-		align-items: center;
-		text-align: center;
-		justify-content: center;
-		margin-bottom: 0;
-
-		@media (max-width: $breakpoint-tablet) {
-			font-size: $h1-size-mobile;
-		}
-	}
-
-	.image {
-		aspect-ratio: 2/1.5;
-	}
-
 	.artwork {
-		display: flex;
-		flex-direction: column;
-		gap: 107px;
-
-		@media (max-width: $breakpoint-tablet) {
-			gap: 41px;
+		width: 800px;
+		max-width: 100%;
+		margin: 0 auto;
+		padding: 0 $page-margin;
+		img {
+			width: 100%;
 		}
 	}
 
-	h3 {
-		text-transform: uppercase;
-		font-family: $body-font;
-		opacity: .4;
-		font-size: 16px;
+	.specs {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 50px;
+	}
+
+	.spec {
+		h3 {
+			font-family: $body-font;
+			font-size: 16px;
+			opacity: .4;
+			text-transform: uppercase;
+		}
 	}
 </style>
