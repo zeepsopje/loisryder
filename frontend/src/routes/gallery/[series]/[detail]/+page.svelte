@@ -59,10 +59,14 @@
 		text-align: center;
 		justify-content: center;
 		margin-bottom: 0;
+
+		@media (max-width: $breakpoint-tablet) {
+			font-size: $h1-size-mobile;
+		}
 	}
 
 	.image {
-		height: calc(100vh - 400px);
+		aspect-ratio: 2/1.5;
 	}
 
 	.artwork {
